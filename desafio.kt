@@ -31,6 +31,7 @@ fun main() {
         matricular(usuario2)
     }
     
+    
     fun exibirNivel(nivel: Nivel) {
         when (nivel) {
             is Nivel.BASICO -> println("Este conteúdo é ${nivel.descricao} e tem uma duração média de 30 minutos.")
