@@ -1,8 +1,10 @@
-// [Template no Kotlin Playground](https://pl.kotl.in/WcteahpyN)
+sealed class Nivel(val descricao: String) {
+    object BASICO : Nivel("Nível básico")
+    object INTERMEDIARIO : Nivel("Nível intermediário")
+    object AVANCADO : Nivel("Nível avançado")
+}
 
-enum class Nivel { BASICO, INTERMEDIARIO, DIFICIL }
-
-class Usuario
+data class Usuario(val nome: String, val email: String)
 
 data class ConteudoEducacional(var nome: String, val duracao: Int = 60)
 
@@ -11,11 +13,34 @@ data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) 
     val inscritos = mutableListOf<Usuario>()
     
     fun matricular(usuario: Usuario) {
-        TODO("Utilize o parâmetro $usuario para simular uma matrícula (usar a lista de $inscritos).")
+        inscritos.add(usuario)
+        println("${usuario.nome} se matriculou na formação $nome.")
     }
 }
 
 fun main() {
-    TODO("Analise as classes modeladas para este domínio de aplicação e pense em formas de evoluí-las.")
-    TODO("Simule alguns cenários de teste. Para isso, crie alguns objetos usando as classes em questão.")
+    // Crie alguns objetos usando as classes em questão
+    val usuario1 = Usuario("João", "joao@gmail.com")
+    val usuario2 = Usuario("Maria", "maria@hotmail.com")
+    
+    val conteudo1 = ConteudoEducacional("Introdução ao Kotlin", 30)
+    val conteudo2 = ConteudoEducacional("Funções e Classes", 40)
+    val conteudo3 = ConteudoEducacional("Collections e Lambdas", 50)
+    
+    val formacao1 = Formacao("Kotlin Básico", listOf(conteudo1, conteudo2, conteudo3)).apply {
+        // Simule alguns cenários de teste
+        matricular(usuario1)
+        matricular(usuario2)
+    }
+    
+    fun exibirNivel(nivel: Nivel) {
+        when (nivel) {
+            is Nivel.BASICO -> println("Este conteúdo é ${nivel.descricao} e tem uma duração média de 30 minutos.")
+            is Nivel.INTERMEDIARIO -> println("Este conteúdo é ${nivel.descricao} e tem uma duração média de 40 minutos.")
+            is Nivel.AVANCADO -> println("Este conteúdo é ${nivel.descricao} e tem uma duração média de 50 minutos.")
+        }
+    }
+    
+    exibirNivel(Nivel.BASICO)
+    exibirNivel(Nivel.AVANCADO)
 }
