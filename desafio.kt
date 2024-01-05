@@ -19,7 +19,6 @@ data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) 
 }
 
 fun main() {
-    // Crie alguns objetos usando as classes em questão
     val usuario1 = Usuario("João", "joao@gmail.com")
     val usuario2 = Usuario("Maria", "maria@hotmail.com")
     
