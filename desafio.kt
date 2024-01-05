@@ -27,7 +27,6 @@ fun main() {
     val conteudo3 = ConteudoEducacional("Collections e Lambdas", 50)
     
     val formacao1 = Formacao("Kotlin Básico", listOf(conteudo1, conteudo2, conteudo3)).apply {
-        // Simule alguns cenários de teste
         matricular(usuario1)
         matricular(usuario2)
     }
